@@ -19,6 +19,9 @@ public class UserServiceImpl implements UserService{
 		// TODO Auto-generated method stub
 		boolean flag = false;
 		try {
+			System.out.println(user.getId());
+			System.out.println(user.getName());
+			System.out.println(user.getAge());
 			userDao.addUser(user);
 			flag = true;
 		} catch (Exception e) {
@@ -59,6 +62,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findUserByName(String userName) {
 		// TODO Auto-generated method stub
+		System.out.println("Service: "+userName);
 		return userDao.findByName(userName);
 	}
 
