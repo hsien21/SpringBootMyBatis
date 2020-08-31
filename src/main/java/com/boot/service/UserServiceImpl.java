@@ -3,33 +3,36 @@ package com.boot.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.object.UpdatableSqlQuery;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.boot.bean.User;
 import com.boot.dao.UserDao;
+import com.boot.factory.UserFactory;
+import com.boot.factory.UserFactoryImpl;
+import com.boot.user.AdminUser;
+import com.boot.user.UserProduct;
 
 @Service
+
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private UserDao userDao;
 
 	@Override
+	@Transactional
 	public boolean addUser(User user) {
 		// TODO Auto-generated method stub
-		boolean flag = false;
-		try {
-			System.out.println(user.getId());
-			System.out.println(user.getName());
-			System.out.println(user.getAge());
-			userDao.addUser(user);
-			flag = true;
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		boolean flag = false;			
+		userDao.addUser(user);
+		flag = true;
+			
 		return flag;
 	}
+
 
 	@Override
 	public boolean updateUser(User user) {
@@ -68,8 +71,10 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> findAll() {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated  method stub
 		return userDao.findAll();
 	}
+	
+	
 
 }
