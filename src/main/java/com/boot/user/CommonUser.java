@@ -7,6 +7,7 @@ public class CommonUser implements UserProduct{
 		// TODO Auto-generated method stub
 		System.out.println("-----------Common Student");
 		
+		
 	}
 
 }

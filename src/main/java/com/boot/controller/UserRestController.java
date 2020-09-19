@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,12 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.boot.bean.User;
 import com.boot.service.UserService;
 
-@RestController
+@Controller
 @RequestMapping(value = "/api/user")
 public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	
+	@RequestMapping(value = "/login",method = RequestMethod.GET)
+	public String getPettern(Model model) {
+		model.addAttribute("user","李白");
+		
+		return "Login";
+	}
+	
 	
 	@RequestMapping(value = "/user",method = RequestMethod.POST)
 	public boolean addUser(@RequestBody User user) {

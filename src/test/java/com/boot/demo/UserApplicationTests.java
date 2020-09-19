@@ -30,18 +30,18 @@ public class UserApplicationTests {
 		// TODO Auto-generated method stub
 		System.out.println("---------------測試寫入開始---------------");
 		Method1();
-		User user = new User();
-		user.setAge(20);
-		user.setName("Cindy");
+		
+		
+		User user =  User.builder().id(0).build();
+		
 		boolean addUser = userService.addUser(user);
 		System.out.println("---------addUser-------"+addUser);
 	}
 	
 	public void Method1() {
-		User user = new User();
-		user.setId(1);
-		user.setAge(20);
-		user.setName("Jack");
+		
+		User user = User.builder().id(1).age(20).name("jack").build();
+		
 		boolean addUser = userService.addUser(user);
 		System.out.println("---------addUser-------"+addUser);
 		if (true) {
