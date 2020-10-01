@@ -14,7 +14,7 @@ import com.boot.bean.User;
 @Mapper
 public interface UserDao {
 	
-	@Insert("insert into t_user(id,name,age) valuse (#{id},#{name},#{age})")
+	@Insert("insert into t_user(id,name,age) values (#{id},#{name},#{age})")
 	void addUser(User user);
 	
 	@Update("update t_user set name=#{name},age=#{age} where id=#{id}")
@@ -24,7 +24,7 @@ public interface UserDao {
 	void deleteUser(int id);
 	
 	@Select("select id,name,age from t_user where name=#{userName}")
-	User findByName(@Param("username") String userName);
+	User findByName(@Param("userName") String userName);
 	
 	@Select("select id,name,age from t_user")
 	List<User> findAll();
